@@ -1,0 +1,80 @@
+zookeeper-server-start.bat ..\..\config\zookeeper.properties
+kafka-server-start.bat ..\..\config\server.properties
+kafka-console-producer.bat --broker-list localhost:9092 --topic test-topic
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic test-topic --from-beginning
+
+
+kafka-topics.bat --create --topic test-topic -zookeeper localhost:2181 --replication-factor 1 --partitions 4
+
+kafka-topics.bat --create --topic test-topic-retention -zookeeper localhost:2181 --replication-factor 1 --partitions 4
+
+kafka-console-producer.bat --broker-list localhost:9092 --topic test-topic
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic test-topic 
+kafka-run-class.bat kafka.tools.DumpLogSegments --deep-iteration --files /tmp/kafka-logs/test-topic-retention-0/00000000000000000000.log
+
+
+
+kafka-topics.bat --zookeeper localhost:2181 --delete --topic <topic-name>
+
+kafka-topics.bat --zookeeper localhost:2181 --delete --topic test-topic
+
+kafka-topics.bat --create --topic test-topic-retention1 -zookeeper localhost:2181 --replication-factor 1 --partitions 1
+
+kafka-topics.bat --create --topic test-topic -zookeeper localhost:2181 --replication-factor 1 --partitions 1
+
+kafka-topics.bat --create --topic topictest1 -zookeeper localhost:2181 --replication-factor 1 --partitions 1
+
+kafka-console-producer.bat --broker-list localhost:9092 --topic topictest1
+
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic topictest1 --from-beginning
+
+curl -d 'id=9&name=baeldung' http://localhost:8082/spring-rest/foos/new
+
+
+
+kafka-topics --bootstrap-server jaieventhub.servicebus.windows.net:9093 --command-config C:/Kafka_Practice/event_config.properties --create --topic testing --config cleanup.policy=compact --partitions 1 --replication-factor 1
+
+kafka-topics --bootstrap-server https://jaifirstnamespace.servicebus.windows.net:9093 --command-config C:/Kafka_Practice/event_config.properties --create --topic firsttopicdemo --config cleanup.policy=compact --partitions 1 --replication-factor 1
+
+kafka-topics --bootstrap-server https://jaifirstnamespace.servicebus.windows.net:9093 --command-config C:/Kafka_Practice/event_config.properties --create --topic exchange-topic --config cleanup.policy=compact --partitions 1 --replication-factor 1
+
+keytool -import -alias downloadedCertAlias5 -keystore "C:\Program Files\Java\jdk1.8.0_60\jre\lib\security\cacerts" -file C:\Kafka_Practice\root_cert.cer
+
+connect-distributed.bat C: /Kafka_Practice/kafka/connect-distributed.properties
+
+curl -d @"C:/Kafka_Practice/kafka/connect-file-source.json" -H "Content-Type: application/json" -X POST http://localhost:8083/connectors
+
+curl -d @"C:/Kafka_Practice/kafka/connect-file-sink.json" -H "Content-Type: application/json" -X POST http://localhost:8083/connectors
+
+
+
+curl  http://localhost:8083/connectors
+
+curl -X DELETE http://localhost:8083/connectors/local-file-source
+
+curl -X DELETE http://localhost:8083/connectors/local-file-sink
+
+
+kafka-console-producer.bat --broker-list jaifirstnamespace.servicebus.windows.net:9093 --topic secondeventhub --producer.config C:/Kafka_Practice/event_config.properties
+
+
+kafka-console-consumer.bat --topic firsttopic --bootstrap-server jaifirstnamespace.servicebus.windows.net:9093 --consumer.config C:/Kafka_Practice/event_config.properties --from-beginning
+
+mvn spring-boot:run
+mvn -X package
+
+curl -d '{"body": "Hello there !"}' -H "Content-Type: application/json" -X POST http://localhost:8080/api/send
+
+curl -H "Content-Type: application/json" -X POST http://localhost:8080/api/send -d "{\"body\":\"Test Value\"}"
+
+--primary key:  u1kCGnfYCGSj2Tzy6bDotcV18S4ZT8UmxfGJanbMtDU=
+--secondary key : JWasKBRjic0GsrUM6/UYS1aKy+miXtXvAlPjI0f5+y0=
+
+--Endpoint=sb://jaifirstnamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=u1kCGnfYCGSj2Tzy6bDotcV18S4ZT8UmxfGJanbMtDU=
+
+
+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
+
+
+
+
